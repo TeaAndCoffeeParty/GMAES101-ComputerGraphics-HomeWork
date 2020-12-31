@@ -1,4 +1,4 @@
-# GMES101-ComputerGraphics-HomeWork
+# GAMES101-ComputerGraphics-HomeWork
 this is for GAMES101 HomeWork about Computer Graphics
 
 
