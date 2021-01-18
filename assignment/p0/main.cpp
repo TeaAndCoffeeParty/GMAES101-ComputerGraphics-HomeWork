@@ -9,13 +9,19 @@
  */
 int main()
 {
-    Eigen::Vector2d p(2, 1);
-	std::cout << p << std::endl;
+    Eigen::Vector3d p(2, 1, 1);
+    Eigen::Matrix3d rotaMat;
+    Eigen::Matrix3d tranMat;
 
-    double rotationAngle = 45.0/180.0*M_PI;
-    double rotationX = p(0,0)*std::cos(-rotationAngle) - p(1,0) *std::sin(-rotationAngle);
-    double rotationY = p(1,0)*std::cos(-rotationAngle) + p(0,0) *std::sin(-rotationAngle);
-    std::cout<<rotationX<<" "<<rotationY<<std::endl;
-    Eigen::Vector2d p0(rotationX, rotationY);
-    std::cout<<p0<<std::endl;
+    double rotAngle = 45.0/180.0*M_PI;
+    rotaMat <<  cos(rotAngle),      (-1.0)*sin(rotAngle),   0,
+                sin(rotAngle),      cos(rotAngle),          0,
+                0,                  0,                      1;
+    tranMat <<  1, 0, 1,
+                0, 1, 2,
+                0, 0, 1;
+    p = tranMat * rotaMat * p;
+//    std::cout<< p << std::endl;
+    std::cout <<  "After rotation and transform the point sits at "
+        << p[0] << "," << p[1] << std::endl;
 }
